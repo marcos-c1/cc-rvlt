@@ -1,58 +1,3 @@
-:root {
-    --white: #EEEEEE;
-    --orange: #F55604;
-    --black: #2E2E2E;
-    --blackier: #191919;
-}
-
-html {
-    background-color: black;
-}
-
-
-@font-face {
-    font-family: 'Offbit';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''), url('https://fonts.cdnfonts.com/s/109666/OffBit-Regular.woff') format('woff');
-}
-@font-face {
-    font-family: '';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''), url('https://fonts.cdnfonts.com/s/109666/OffBit-101.woff') format('woff');
-}
-@font-face {
-    font-family: '';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''), url('https://fonts.cdnfonts.com/s/109666/OffBit-Dot.woff') format('woff');
-}
-@font-face {
-    font-family: '';
-    font-style: normal;
-    font-weight: 700;
-    src: local(''), url('https://fonts.cdnfonts.com/s/109666/OffBit-101Bold.woff') format('woff');
-}
-@font-face {
-    font-family: '';
-    font-style: normal;
-    font-weight: 700;
-    src: local(''), url('https://fonts.cdnfonts.com/s/109666/OffBit-Bold.woff') format('woff');
-}
-@font-face {
-    font-family: '';
-    font-style: normal;
-    font-weight: 700;
-    src: local(''), url('https://fonts.cdnfonts.com/s/109666/OffBit-DotBold.woff') format('woff');
-}
-
-body {
-    font-family: 'Offbit';
-    margin: 0;
-    padding: 0;
-}
-
 #container {
     height: 99.8vh;
     width: 99.9vw;
@@ -119,17 +64,6 @@ a {
     background-color: var(--white);
 }
 
-.flex-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.flex-col {
-    display: flex;
-    flex-direction: column;
-}
-
 h1 {
     font-size: 10vh;
 }
@@ -164,25 +98,6 @@ h2 {
     font-size: 8vh;
 }
 
-svg {
-    fill: var(--white);
-    width: 28px;
-    font-weight: bolder;
-    color: var(--white);
-}
-
-.top-right {
-    font-size: 2.5vh;
-    align-self: end;
-}
-
-.bottom {
-    justify-self: flex-end;
-}
-
-.center {
-    align-self: center;
-}
 h4 {
     font-size: 4vh;
 }
@@ -203,4 +118,9 @@ small {
     border-style: groove;
     border-radius: 20px;
     padding: 1vh;
+}
+
+.eng:hover, .pt:hover {
+    color: var(--orange);
+    cursor: pointer;
 }
