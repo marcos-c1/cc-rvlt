@@ -124,3 +124,7 @@ small {
     color: var(--orange);
     cursor: pointer;
 }
+
+#login_btn:hover {
+    cursor: pointer;
+}

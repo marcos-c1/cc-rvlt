@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Prices | ULearn</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/prices.css">
 </head>
 <body>
     <main id="container">
+        <a href="/home.html" id="btn" class="go-back">Go back</a>
         <section class="flex-col">
-            <div class="center">
+            <div class="flex-col center">
                 <h1 id="title">Standard</h1>
-                <h4 id="price">$ 9.99</h4>    
+                <h4 id="price">$ 9.99</h4>
+                <small>Montly</small>  
             </div>
-            <button id="btn">Enroll</button>
+            <a href="/payment.html?enroll=1" class="full-width">
+                <button id="btn" class="full-width">Enroll</button>
+            </a>
             <div class="flex-col" id="list">
                 <p>Sign up and have access to:</p>
                 <ul>
@@ -28,9 +32,12 @@
         <section class="flex-col">
             <div class="flex-col center">
                 <h1 id="title">Pro</h1>
-                <h4 id="price">$ 19.99</h4>    
+                <h4 id="price">$ 19.99</h4>
+                <small>Montly</small>
             </div>
-            <button id="btn">Enroll</button>
+            <a href="/payment.html?enroll=2" class="full-width">
+                <button id="btn" class="full-width">Enroll</button>
+            </a>
             <div class="flex-col" id="list">
                 <p>Sign up and have access to:</p>
                 <ul>

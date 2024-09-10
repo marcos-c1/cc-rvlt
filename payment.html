@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment | ULearn</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/payment.css">
+</head>
+<body>
+    <main id="container">
+        <section method="post" id="form">
+            <h1>Complete your registration</h1>
+            <div class="flex-col">
+                <label for="name">Full Name</label>
+                <input type="text" name="name" id="name"/>
+            </div>
+            
+            <div id="grid-2cols">
+                <div class="flex-col">
+                    <label for="mail">Email</label>
+                    <input type="email" name="mail" id="mail"/>
+                </div>
+                <div class="flex-col">
+                    <label for="cel">Phone</label>
+                    <input type="text" name="cel" id="cel"/>
+                </div>
+            </div>
+            <div class="flex-col">
+                <label>Discount coupom</label>
+                <div class="grid-2cols-400px">
+                    <input type="text">
+                    <button type="menu" id="btn">Add</button>
+                </div>
+            </div>
+            
+            <label id="label-payment">Payment Type</label>
+            <div class="grid">
+                
+            </div>
+        </section>
+        <section id="section__payment" class="flex-col">
+            <h2>Summary</h2>
+            <div class="flex-row">
+                <span>Subtotal</span>
+                <span>$ 119.88</span>
+            </div>
+            <div class="flex-row">
+                <span>Coupom</span>
+                <span>$ 0.00</span>
+            </div>
+            <div id="divider"></div>
+            <div class="flex-row">
+                <h2 class="center">TOTAL</h2>
+                <div class="flex-col">
+                    <span id="total">$ 119.88</span>
+                    <small>3x of $ 39.96</small>
+                </div>
+            </div>
+            <div class="card__choice">
+                <div class="flex-col" id="list">
+                    <p>PRO</p>
+                    <ul>
+                        <li>Access to selected courses for 3 months</li>
+                        <li>Certificate</li>
+                        <li>Mentoring with experts</li>
+                    </ul>    
+                </div>
+            </div>
+            <button id="btn" class="center text-base full-width">Confirm payment</button>
+        </section>
+    </main>
+</body>
+<script src="js/payment.js"></script>
+</html>

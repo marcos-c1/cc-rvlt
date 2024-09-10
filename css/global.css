@@ -7,6 +7,7 @@
 
 a {
     text-decoration: none;
+    color: unset;
 }
 
 html {
@@ -95,4 +96,8 @@ h1, h2, h3, h4 {
 
 ul {
     list-style: circle;
+}
+
+.full-width {
+    width: 100%;
 }
