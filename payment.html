@@ -34,9 +34,48 @@
                 </div>
             </div>
             
-            <label id="label-payment">Payment Type</label>
-            <div class="grid">
-                
+            <div id="grid-2cols">
+                <div class="flex-col">
+                    <label id="label-payment">Payment Type</label>
+                    <select name="payment-type" id="type">
+                        <option value="">-- Choose an payment type --</option>
+                        <option value="credit-card">Credit Card</option>
+                        <option value="pix">Pix</option>
+                        <option value="paypal">Paypal</option>
+                        <option value="nubank">Nubank</option>
+                    </select>
+                </div>
+                <div class="flex-row justify-unset align-last select-none">
+                    <input type="checkbox" name="foreigner" id="foreigner">
+                    <label class="text-base" style="margin-left: 1vh;" for="foreigner">I'm a foreigner</label>
+                </div>
+            </div>
+            
+            
+            <div id="choosen-type">
+                <div class="flex-col">
+                    <label for="credit-card">Credit Card Number</label>
+                    <input type="text" name="credit-card" id="credit-card"/>
+                </div>
+                <div id="grid-2cols">
+                    <div class="flex-col">
+                        <label for="exp-date">Expiration Date</label>
+                        <input type="text" name="exp-date" id="exp-date"/>
+                    </div>
+                    <div class="flex-col">
+                        <label for="cvv">CSC</label>
+                        <input type="text" name="cvv" id="cvv"/>
+                    </div>
+                </div>
+                <div class="flex-col">
+                    <label for="name-card">Name on Card</label>
+                    <input type="text" name="name-card" id="name-card"/>
+                </div>
+                <div class="flex-col">
+                    <label for="name-card">Installments</label>
+                    <select name="installments" id="installments">
+                    </select>
+                </div>
             </div>
         </section>
         <section id="section__payment" class="flex-col">
