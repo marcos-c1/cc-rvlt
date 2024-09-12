@@ -5,7 +5,7 @@
     height: 100vh;
     width: 100vw;
     display: grid;
-    gap: 2vh;
+    gap: 10vh;
     grid-template-columns: 600px 400px;
 }
 
@@ -29,7 +29,7 @@ label {
     margin-bottom: 1vh;
 }
 
-#section__payment {
+#section__payment, small {
     letter-spacing: 2px;
 }
 span {
@@ -121,7 +121,7 @@ input, select {
     font-weight: bolder;
 }
 
-#choosen-type {
+#credit-card-container, #pix-container, #paypal-container, #nubank-container {
     margin-top: 4vh;
 }
 
@@ -167,4 +167,47 @@ input[type="checkbox"]::before {
 
 .select-none {
     user-select: none;
+}
+
+.justify-start {
+    justify-content: flex-start;
+}
+
+#attention-icon {
+    width: 25px;
+    height: 25px;
+}
+
+#nubank-list > div {
+    justify-content: flex-start !important;
+    align-items: center;
+    margin-bottom: 3vh;
+}
+
+#nubank-list > div > svg {
+    width: 30px;
+    margin-right: 2vh;
+}
+
+#nubank-list > div > li {
+    list-style: none;
+    font-size: 2.3vh;
+    font-weight: 700;
+}
+
+#nubank-container > h2 {
+    margin: 5vh 0;
+}
+
+#pix-container > div:last-child{
+ justify-content: flex-start !important;
+}
+
+#pix-container > div:last-child > svg {
+    margin-right: 2vh;
+}
+
+#pix-container > div:last-child > p {
+    font-size: 2.2vh;
+    font-weight: 700;
 }
