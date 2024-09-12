@@ -2,7 +2,8 @@
     color: var(--white);
     justify-content: center;
     align-content: center;
-    width: 100vw;
+    min-width: 100vw;
+    min-height: 100vh;
     display: grid;
     gap: 10vh;
     grid-template-columns: 600px 400px;
