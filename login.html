@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | u-learn</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body>
+    <main id="container">
+      <a href="/home.html" id="btn" class="go-back">Go back</a>
+      <form
+        action="post"
+        onsubmit="handleSubmit"
+        id="login__container"
+        class="flex-col"
+      >
+        <h1 style="margin-bottom: 5vh">u-learn</h1>
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+        <div class="flex-row" style="margin-top: 1vh; margin-bottom: 2vh">
+          <a href="forgot-pwd.html"><small>Forgot your password?</small></a>
+          <div class="flex-row" id="remember__container">
+            <input type="checkbox" id="check" />
+            <span>Remember me?</span>
+          </div>
+        </div>
+        <button id="btn" type="submit">Enter</button>
+      </form>
+    </main>
+  </body>
+  <script src="js/login.js"></script>
+</html>

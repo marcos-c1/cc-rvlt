@@ -1,130 +1,139 @@
 #container {
-    height: 99.8vh;
-    width: 99.9vw;
-    padding: 0.1vh;
-    display: grid;
-    gap: 0.23vh;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-areas:
-		"intro intro hero hero"
-		"courses prices skill-path skill-path"
-		;
+  height: 99.8vh;
+  width: 99.9vw;
+  padding: 0.1vh;
+  display: grid;
+  gap: 0.23vh;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "intro intro hero hero"
+    "courses prices skill-path skill-path";
 }
 
-a {
-    border: 4px solid #4d4c4c;
-    border-radius: 20px;
-    padding: 2vh;
-    text-decoration: none;
-    cursor: unset;
+#intro,
+#hero,
+#courses,
+#prices,
+#skill-path {
+  border: 4px solid #4d4c4c;
+  border-radius: 20px;
+  padding: 2vh;
+  text-decoration: none;
+  cursor: unset;
 }
 
 #intro {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    grid-area: intro;
-    color: var(--white);
-    background-color: var(--black);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  grid-area: intro;
+  color: var(--white);
+  background-color: var(--black);
 }
 
 #hero {
-    justify-content: space-between;
-    grid-area: hero;
-    color: var(--orange);
-    background-color: var(--blackier);
+  justify-content: space-between;
+  grid-area: hero;
+  color: var(--orange);
+  background-color: var(--blackier);
 }
 
 #courses {
-    justify-content: space-between;
-    grid-area: courses;
-    color: var(--orange);
-    background-color: var(--blackier);
+  justify-content: space-between;
+  grid-area: courses;
+  color: var(--orange);
+  background-color: var(--blackier);
 }
 
 #prices {
-    justify-content: space-between;
-    grid-area: prices;
-    color: var(--orange);
-    background-color: var(--blackier);
+  justify-content: space-between;
+  grid-area: prices;
+  color: var(--orange);
+  background-color: var(--blackier);
 }
 
-#courses:hover, #prices:hover {
-    cursor: pointer;
-    transition: 0.3s all ease-in-out;
-    background-color: var(--orange);
-    color: var(--white);
-    fill: var(--white);
+#courses:hover,
+#prices:hover,
+#skill-path:hover {
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+  background-color: var(--orange);
+  color: var(--white);
+  fill: var(--white);
 }
 
 #skill-path {
-    border-color: var(--orange);
-    grid-area: skill-path;
-    color: var(--orange);
-    background-color: var(--white);
+  border-color: var(--orange);
+  grid-area: skill-path;
+  color: var(--orange);
+  background-color: var(--white);
 }
 
 h1 {
-    font-size: 10vh;
+  font-size: 10vh;
 }
 
 .intro__body {
-    font-size: 4vh;
-    padding-bottom: 2vh;
+  font-size: 4vh;
+  padding-bottom: 2vh;
 }
 
 .skill-path__body {
-    padding: 2vh 0;
+  padding: 2vh 0;
 }
 
-.intro__paragraph, .skill-path__paragraph {
-    font-size: 3vh;
-    max-width: 600px;
+.intro__paragraph,
+.skill-path__paragraph {
+  font-size: 3vh;
+  max-width: 600px;
 }
 .text-lighter {
-    font-weight: lighter;
-
+  font-weight: lighter;
 }
 
 .text-bolder {
-    font-weight: bolder;
+  font-weight: bolder;
 }
 
-h1, p, h2, h4 {
-    margin: 0;
+h1,
+p,
+h2,
+h4 {
+  margin: 0;
 }
 
 h2 {
-    font-size: 8vh;
+  font-size: 8vh;
 }
 
 h4 {
-    font-size: 4vh;
+  font-size: 4vh;
 }
 
 small {
-    font-size: 1.7vh;
+  font-size: 1.7vh;
 }
 
 .logo {
-    font-weight: bolder;
-    text-decoration: underline;
-    font-size: 2vh;
+  font-weight: bolder;
+  text-decoration: underline;
+  font-size: 2vh;
 }
 
 #button {
-    border-image: linear-gradient(to right, var(--orange) 0%, var(--white) 100%) 1;
-    border-width: 1px;
-    border-style: groove;
-    border-radius: 20px;
-    padding: 1vh;
+  border-image: linear-gradient(to right, var(--orange) 0%, var(--white) 100%) 1;
+  border-width: 1px;
+  border-style: groove;
+  border-radius: 20px;
+  padding: 1vh;
 }
 
-.eng:hover, .pt:hover {
-    color: var(--orange);
-    cursor: pointer;
+.eng:hover,
+.pt:hover {
+  color: var(--orange);
+  cursor: pointer;
 }
 
 #login_btn:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
