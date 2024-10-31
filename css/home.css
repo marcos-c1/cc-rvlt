@@ -121,11 +121,12 @@ small {
 }
 
 #button {
+  align-self: end;
   border-image: linear-gradient(to right, var(--orange) 0%, var(--white) 100%) 1;
   border-width: 1px;
   border-style: groove;
   border-radius: 20px;
-  padding: 1vh;
+  padding: 0.5vh 1vh;
 }
 
 .eng:hover,

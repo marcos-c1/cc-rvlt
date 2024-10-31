@@ -8,21 +8,31 @@
     <link rel="stylesheet" href="css/login.css" />
   </head>
   <body>
+    <div hidden id="opacity-bg"></div>
     <main id="container">
+      <div class="flex-col" id="forgot-pwd-modal">
+        <p style="word-spacing: 2px; font-size: medium">
+          In case that you forgot your password, we can sent an e-mail
+          confirmation so you can change your current password to a new one.
+          Please type your linked account e-mail below
+        </p>
+        <input type="text" placeholder="E-mail confirmation" />
+        <button id="btn">Send confirmation</button>
+      </div>
       <a href="/home.html" id="btn" class="go-back">Go back</a>
       <form
-        action="post"
-        onsubmit="handleSubmit"
+        action=""
+        onsubmit="handleLogin"
         id="login__container"
         class="flex-col"
       >
         <h1 style="margin-bottom: 5vh">u-learn</h1>
-        <input type="text" placeholder="Username" />
-        <input type="password" placeholder="Password" />
+        <input type="text" name="login" id="login" placeholder="Username" />
+        <input type="password" name="pwd" id="pwd" placeholder="Password" />
         <div class="flex-row" style="margin-top: 1vh; margin-bottom: 2vh">
-          <a href="forgot-pwd.html"><small>Forgot your password?</small></a>
+          <small id="forgot-pwd">Forgot your password?</small>
           <div class="flex-row" id="remember__container">
-            <input type="checkbox" id="check" />
+            <input type="checkbox" name="check" id="check" />
             <span>Remember me?</span>
           </div>
         </div>
