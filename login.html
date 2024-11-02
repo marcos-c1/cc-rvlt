@@ -16,8 +16,10 @@
           confirmation so you can change your current password to a new one.
           Please type your linked account e-mail below
         </p>
-        <input type="text" placeholder="E-mail confirmation" />
-        <button id="btn">Send confirmation</button>
+        <div class="flex-col" style="gap: 2vh;">
+          <input type="text" placeholder="E-mail confirmation" />
+          <button id="btn">Send confirmation</button>
+        </div>
       </div>
       <a href="/home.html" id="btn" class="go-back">Go back</a>
       <form
@@ -30,10 +32,10 @@
         <input type="text" name="login" id="login" placeholder="Username" />
         <input type="password" name="pwd" id="pwd" placeholder="Password" />
         <div class="flex-row" style="margin-top: 1vh; margin-bottom: 2vh">
-          <small id="forgot-pwd">Forgot your password?</small>
+          <small id="forgot-pwd" style="user-select: none;">Forgot your password?</small>
           <div class="flex-row" id="remember__container">
             <input type="checkbox" name="check" id="check" />
-            <span>Remember me?</span>
+            <span style="user-select: none;">Remember me?</span>
           </div>
         </div>
         <button id="btn" type="submit">Enter</button>

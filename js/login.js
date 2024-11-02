@@ -5,9 +5,14 @@ const forgotPwd = document.getElementById("forgot-pwd");
 const forgotModal = document.getElementById("forgot-pwd-modal");
 const bgBlur = document.getElementById("opacity-bg");
 
+bgBlur.addEventListener('click', () => {
+  if (forgotModal.style.display === "block") {
+    bgBlur.toggleAttribute("hidden");
+    forgotModal.style.display = "none";
+  }
+})
 //TODO: Implement an onclick event outside forgotModal container that closes the container itself
 forgotPwd.addEventListener("click", () => {
-  console.log(forgotModal.style.display);
   if (forgotModal.style.display === "none" || !forgotModal.style.display) {
     bgBlur.removeAttribute("hidden");
     forgotModal.style.display = "block";
