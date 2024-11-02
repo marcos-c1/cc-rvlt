@@ -4,10 +4,21 @@
   padding: 0.1vh;
   display: grid;
   gap: 0.23vh;
+  overflow: hidden;
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
     "intro intro hero hero"
     "courses prices skill-path skill-path";
+}
+
+#container__bg {
+  font: inherit;
+  position: absolute;
+  opacity: 0.4;
+  z-index: -1;
+  color: var(--orange);
+  word-wrap: break-word;
+  text-align: justify;
 }
 
 #intro,
@@ -20,6 +31,7 @@
   padding: 2vh;
   text-decoration: none;
   cursor: unset;
+  z-index: 2;
 }
 
 #intro {
@@ -31,11 +43,28 @@
   background-color: var(--black);
 }
 
+#button {
+  margin: 2vh;
+}
+
+#number-one {
+  align-self: center !important;
+  margin-right: 2vh;
+}
+
 #hero {
+  position: relative;
+  padding: 0 !important;
   justify-content: space-between;
   grid-area: hero;
   color: var(--orange);
   background-color: var(--blackier);
+}
+
+#hero__title {
+  background-color: var(--blackier);
+  border-radius: 50%;
+  padding: 6vh 3vh;
 }
 
 #courses {
