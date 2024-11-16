@@ -1,4 +1,7 @@
-const http = require('http');
+import connectDB from './db/config.js';
+import http from "http";
+
+connectDB();
 
 const server = http.createServer((req, res) => {
     if(req.url === '/'){
