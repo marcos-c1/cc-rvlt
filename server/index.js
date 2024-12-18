@@ -1,22 +1,18 @@
-import connectDB from './db/config.js';
-import http from "http";
+const express = require('express');
+require('dotenv').config()
+const Sequelizer = require('./db/config');
+const PORT = process.env.PORT || 3000;
+const app = express();
 
-connectDB();
+// Rotas
+const userRoutes = require('./routes/userRoutes');
 
-const server = http.createServer((req, res) => {
-    if(req.url === '/'){
-        res.writeHead(200, {'Content-Type': 'text/plain/'})
-        res.end('Hello, World!')
-    } else if(req.url === '/auth'){
-        res.writeHead(200, {'Content-Type': 'text/plain'})
-        res.end('User authenticated.')
-    } else {
-        res.writeHead(404, {'Content-Type': 'text/plain'})
-        res.end('Page not found.')
-    }
-})
+app.use('/api/v1', userRoutes);
 
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+const seq = new Sequelizer();
+
+seq.testConnection();
+
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
 });

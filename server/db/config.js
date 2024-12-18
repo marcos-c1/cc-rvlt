@@ -1,19 +1,28 @@
-import { config } from 'dotenv';
-import mysql from 'mysql';
+require('dotenv').config();
+const sqlite = require('sqlite3');
+const {Sequelize, DataTypes } = require('sequelize');
 
-config();
+class Sequelizer {
+    constructor() {
+        this.sequelize = new Sequelize('sqlite::memory::', {
+            dialect: 'sqlite',
+            storage: '../storage/db.sqlite'
+        });
+    }
 
-const connection = mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PWD,
-})
-
-export default function connectDB(){
-    connection.connect((err) => {
-        if(err){
-            throw err;
+    async testConnection() {
+        try {
+            await this.sequelize.authenticate();
+            console.log('Conexão com o SQLite estabelecida com sucesso.');
+        } catch (error) {
+            console.error('Erro ao estabelecer conexão com o SQLite: ', error);
         }
-        console.log('Connected to mysql database');
-    })
+    }
+
+    async close() {
+        await this.sequelize.close();
+    }
 }
+
+
+module.exports = Sequelizer;
