@@ -1,16 +1,16 @@
 const User = require("../models/User");
 
 class UserController {
-  static getUsers = async (req, res) => {
+  static async getUsers(req, res) {
     try {
       const users = await User.findAll();
-      res.json(users);
+      return res.status(200).json(users);
     } catch (e) {
-      res.status(500).json(`Erro ao buscar usuários: ${e}`);
+      return res.status(500).json(`Erro ao buscar usuários: ${e}`);
     }
-  };
+  }
 
-  static getUserById = async (req, res) => {
+  static async getUserById(req, res) {
     const { id } = req.params;
 
     try {
@@ -19,15 +19,14 @@ class UserController {
           idUser: id,
         },
       });
-      if (user) res.json(user);
-      else res.status(404).json(`Usuário não encontrado`);
+      if (!user) return res.status(404).json(`Usuário não encontrado`);
+      return res.status(200).json(user);
     } catch (e) {
-      res.status(500).json(`Erro ao buscar usuário ${id}: ${e}`);
+      return res.status(500).json(`Erro ao buscar usuário ${id}: ${e}`);
     }
-  };
+  }
 
-  static createUser = async (req, res) => {
-    console.log(req.body);
+  static async createUser(req, res) {
     try {
       const user = await User.create({
         fullName: req.body.fullname,
@@ -38,13 +37,13 @@ class UserController {
         idPayment: req.body.idPayment ?? null,
       });
 
-      res.status(201).json(`Usuário ${user.fullname} criado!`);
+      return res.status(201).json(`Usuário ${user.fullname} criado!`);
     } catch (e) {
-      res.status(500).json(`Erro ao criar usuário: ${e}`);
+      return res.status(500).json(`Erro ao criar usuário: ${e}`);
     }
-  };
+  }
 
-  static updateUserById = async (req, res) => {
+  static async updateUserById(req, res) {
     const { id } = req.params;
     try {
       await User.update(
@@ -62,13 +61,13 @@ class UserController {
           },
         },
       );
-      res.status(202).json(`Usuário ${id} alterado com sucesso!`);
+      return res.status(202).json(`Usuário ${id} alterado com sucesso!`);
     } catch (e) {
-      res.status(500).json(`Erro ao alterar usuário: ${e}`);
+      return res.status(500).json(`Erro ao alterar usuário: ${e}`);
     }
-  };
+  }
 
-  static deleteUserById = async (req, res) => {
+  static async deleteUserById(req, res) {
     const { id } = req.params;
     try {
       await User.destroy({
@@ -76,11 +75,11 @@ class UserController {
           idUser: id,
         },
       });
-      res.status(200).json(`Usuário ${id} deletado com sucesso!`);
+      return res.status(200).json(`Usuário ${id} deletado com sucesso!`);
     } catch (e) {
-      res.status(500).json(`Erro ao deletar usuário: ${e}`);
+      return res.status(500).json(`Erro ao deletar usuário: ${e}`);
     }
-  };
+  }
 }
 
 module.exports = UserController;

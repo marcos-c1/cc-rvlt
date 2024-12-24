@@ -1,10 +1,10 @@
 const jwt = require("jsonwebtoken");
 
 class AuthMiddleware {
-  static verifyToken = async (req, res, next) => {
+  static async verifyToken(req, res, next) {
     const token = req.cookies.access_token;
     if (!token) {
-      res.status(401).json(`Acesso negado.`);
+      return res.status(401).json(`Acesso negado.`);
     }
     try {
       const decodedJwt = jwt.verify(token, process.env.JWT_SECRET);
@@ -16,9 +16,9 @@ class AuthMiddleware {
 
       next();
     } catch (e) {
-      res.status(401).json(`Token invalido: ${e}`);
+      return res.status(401).json(`Token invalido: ${e}`);
     }
-  };
+  }
 }
 
 module.exports = AuthMiddleware;

@@ -3,16 +3,16 @@ const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 
 class AccountController {
-  static getAccounts = async (req, res) => {
+  static async getAccounts(req, res) {
     try {
       const accounts = await Account.findAll();
-      res.json(accounts);
+      return res.status(200).json(accounts);
     } catch (e) {
-      res.status(500).json(`Erro ao buscar contas: ${e}`);
+      return res.status(500).json(`Erro ao buscar contas: ${e}`);
     }
-  };
+  }
 
-  static getAccountById = async (req, res) => {
+  static async getAccountById(req, res) {
     const { id } = req.params;
 
     try {
@@ -21,15 +21,16 @@ class AccountController {
           idAccount: id,
         },
       });
-      console.log(account);
-      if (account) res.json(account);
-      else res.status(404).json(`Conta não encontrada`);
+      if (!account) {
+        return res.status(404).json(`Conta não encontrada`);
+      }
+      return res.status(200).json(account);
     } catch (e) {
-      res.status(500).json(`Erro ao buscar conta ${id}: ${e}`);
+      return res.status(500).json(`Erro ao buscar conta ${id}: ${e}`);
     }
-  };
+  }
 
-  static loginToAccount = async (req, res) => {
+  static async loginToAccount(req, res) {
     const { email, password } = req.body;
     try {
       const user = await User.findOne({
@@ -80,23 +81,23 @@ class AccountController {
         .status(200)
         .json(`Logado.`);
     } catch (e) {
-      res.status(500).json(`Erro ao autenticar conta: ${e}`);
+      return res.status(500).json(`Erro ao autenticar conta: ${e}`);
     }
-  };
+  }
 
-  static createAccount = async (req, res) => {
+  static async createAccount(req, res) {
     try {
       const account = await Account.create({
         idUser: req.body.idUser,
         password: req.body.password,
       });
-      res.status(201).json(`Conta criada!`);
+      return res.status(201).json(`Conta criada!`);
     } catch (e) {
-      res.status(500).json(`Erro ao criar conta: ${e}`);
+      return res.status(500).json(`Erro ao criar conta: ${e}`);
     }
-  };
+  }
 
-  static updateAccountById = async (req, res) => {
+  static async updateAccountById(req, res) {
     const { id } = req.params;
     try {
       await Account.update(
@@ -110,13 +111,13 @@ class AccountController {
           },
         },
       );
-      res.status(202).json(`Conta ${id} alterada com sucesso!`);
+      return res.status(202).json(`Conta ${id} alterada com sucesso!`);
     } catch (e) {
-      res.status(500).json(`Erro ao alterar conta: ${e}`);
+      return res.status(500).json(`Erro ao alterar conta: ${e}`);
     }
-  };
+  }
 
-  static deleteAccountById = async (req, res) => {
+  static async deleteAccountById(req, res) {
     const { id } = req.params;
     try {
       await Account.destroy({
@@ -124,11 +125,11 @@ class AccountController {
           idAccount: id,
         },
       });
-      res.status(200).json(`Conta ${id} deletada com sucesso!`);
+      return res.status(200).json(`Conta ${id} deletada com sucesso!`);
     } catch (e) {
-      res.status(500).json(`Erro ao deletar usuário: ${e}`);
+      return res.status(500).json(`Erro ao deletar usuário: ${e}`);
     }
-  };
+  }
 }
 
 module.exports = AccountController;
