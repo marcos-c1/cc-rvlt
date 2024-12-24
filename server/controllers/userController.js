@@ -17,7 +17,8 @@ class UserController {
       const user = await User.findOne({
         idUser: id,
       });
-      res.json(user);
+      if (user) res.json(user);
+      else res.status(404).json(`Usuário não encontrado`);
     } catch (e) {
       res.status(500).json(`Erro ao buscar usuário ${id}: ${e}`);
     }
@@ -31,6 +32,7 @@ class UserController {
         phone: req.body.phone,
         idCourse: req.body.idCourse ?? null,
         isAdmin: req.body.isAdmin ?? false,
+        idPayment: req.body.idPayment ?? null,
       });
 
       res.status(201).json(`Usuário ${user} criado!`);
@@ -49,6 +51,7 @@ class UserController {
           phone: req.body.phone,
           idCourse: req.body.idCourse ?? null,
           isAdmin: req.body.isAdmin ?? false,
+          idPayment: req.body.idPayment ?? null,
         },
         {
           where: {

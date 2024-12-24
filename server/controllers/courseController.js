@@ -18,7 +18,8 @@ class CourseController {
       const course = await Course.findOne({
         idCourse: id,
       });
-      res.json(course);
+      if (course) res.json(course);
+      else res.status(404).json(`Curso não encontrado`);
     } catch (e) {
       res.status(500).json(`Erro ao buscar curso ${id}: ${e}`);
     }

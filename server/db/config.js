@@ -19,10 +19,6 @@ class Database extends Sequelize {
       console.error("Erro ao estabelecer conexão com o SQLite: ", error);
     }
   }
-
-  async close() {
-    await this.close();
-  }
 }
 
 const sequelize = new Database();

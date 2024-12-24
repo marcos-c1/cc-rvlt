@@ -17,7 +17,8 @@ class PaymentController {
       const payment = await Payment.findOne({
         idPayment: id,
       });
-      res.json(payment);
+      if (payment) res.json(payment);
+      else res.status(404).json(`Pagamento não encontrado`);
     } catch (e) {
       res.status(500).json(`Erro ao buscar pagamento ${id}: ${e}`);
     }
