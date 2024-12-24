@@ -15,7 +15,9 @@ class UserController {
 
     try {
       const user = await User.findOne({
-        idUser: id,
+        where: {
+          idUser: id,
+        },
       });
       if (user) res.json(user);
       else res.status(404).json(`Usuário não encontrado`);

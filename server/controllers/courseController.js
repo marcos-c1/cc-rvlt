@@ -16,7 +16,9 @@ class CourseController {
 
     try {
       const course = await Course.findOne({
-        idCourse: id,
+        where: {
+          idCourse: id,
+        },
       });
       if (course) res.json(course);
       else res.status(404).json(`Curso não encontrado`);

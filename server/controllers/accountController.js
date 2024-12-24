@@ -17,8 +17,11 @@ class AccountController {
 
     try {
       const account = await Account.findOne({
-        idAccount: id,
+        where: {
+          idAccount: id,
+        },
       });
+      console.log(account);
       if (account) res.json(account);
       else res.status(404).json(`Conta não encontrada`);
     } catch (e) {
