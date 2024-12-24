@@ -25,6 +25,7 @@ class UserController {
   };
 
   static createUser = async (req, res) => {
+    console.log(req.body);
     try {
       const user = await User.create({
         fullName: req.body.fullname,
@@ -35,7 +36,7 @@ class UserController {
         idPayment: req.body.idPayment ?? null,
       });
 
-      res.status(201).json(`Usuário ${user} criado!`);
+      res.status(201).json(`Usuário ${user.fullname} criado!`);
     } catch (e) {
       res.status(500).json(`Erro ao criar usuário: ${e}`);
     }

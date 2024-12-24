@@ -1,10 +1,15 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, Model } = require("sequelize");
 const sequelize = require("../db/config");
 const bcrypt = require("bcrypt");
 const User = require("./User");
 
-const Account = sequelize.define(
-  "Account",
+class Account extends Model {
+  validPwd = (pwd) => {
+    return bcrypt.compareSync(pwd, this.password);
+  };
+}
+
+Account.init(
   {
     idAccount: {
       type: DataTypes.INTEGER,
@@ -30,11 +35,7 @@ const Account = sequelize.define(
         user.password = bcrypt.hashSync(user.password, salt);
       },
     },
-    instanceMethods: {
-      validPwd: (pwd) => {
-        return bcrypt.compareSync(pwd, this.password);
-      },
-    },
+    sequelize,
   },
 );
 

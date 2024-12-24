@@ -1,4 +1,6 @@
 const Account = require("../models/Account");
+const User = require("../models/User");
+const jwt = require("jsonwebtoken");
 
 class AccountController {
   static getAccounts = async (req, res) => {
@@ -24,13 +26,68 @@ class AccountController {
     }
   };
 
+  static loginToAccount = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+      const user = await User.findOne({
+        where: {
+          email: email,
+        },
+      });
+
+      const account = await Account.findOne({
+        where: {
+          idUser: user.idUser,
+        },
+      });
+
+      if (!user || !account) {
+        return res.status(401).json(`Acesso negado. E-mail ou senha errados`);
+      }
+
+      const match = account.validPwd(password);
+
+      if (!match) {
+        return res.status(401).json(`Acesso negado. E-mail ou senha errados`);
+      }
+      const payload = {
+        idUser: user.idUser,
+        isAdmin: user.isAdmin,
+        email: user.email,
+        idPayment: user.idPayment,
+      };
+
+      const token = jwt.sign(payload, process.env.JWT_SECRET, {
+        expiresIn: "1hr",
+      });
+
+      const refreshToken = jwt.sign(payload, process.env.JWT_SECRET, {
+        expiresIn: "7d",
+      });
+
+      return res
+        .cookie("access_token", token, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+        })
+        .cookie("refresh_token", refreshToken, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+        })
+        .status(200)
+        .json(`Logado.`);
+    } catch (e) {
+      res.status(500).json(`Erro ao autenticar conta: ${e}`);
+    }
+  };
+
   static createAccount = async (req, res) => {
     try {
       const account = await Account.create({
         idUser: req.body.idUser,
         password: req.body.password,
       });
-      res.status(201).json(`Conta ${account.id} criada!`);
+      res.status(201).json(`Conta criada!`);
     } catch (e) {
       res.status(500).json(`Erro ao criar conta: ${e}`);
     }
