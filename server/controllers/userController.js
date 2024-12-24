@@ -37,7 +37,7 @@ class UserController {
         idPayment: req.body.idPayment ?? null,
       });
 
-      return res.status(201).json(`Usuário ${user.fullname} criado!`);
+      return res.status(201).json(`Usuário criado!`);
     } catch (e) {
       return res.status(500).json(`Erro ao criar usuário: ${e}`);
     }

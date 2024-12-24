@@ -8,11 +8,8 @@ class AuthMiddleware {
     }
     try {
       const decodedJwt = jwt.verify(token, process.env.JWT_SECRET);
-      const { idUser, isAdmin, email, idPayment } = decodedJwt;
+      const { idUser } = decodedJwt;
       req.idUser = idUser;
-      req.isAdmin = isAdmin;
-      req.email = email;
-      req.idPayment = idPayment;
 
       next();
     } catch (e) {

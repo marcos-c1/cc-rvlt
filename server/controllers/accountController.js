@@ -14,6 +14,12 @@ class AccountController {
 
   static async getAccountById(req, res) {
     const { id } = req.params;
+    const idUserFromMid = req.idUser;
+
+    // If jwt decoded token from idUser is not equal to the actualy params, it should throw access denied to that endpoint
+    if (idUserFromMid != id) {
+      return res.status(401).json(`Acesso negado.`);
+    }
 
     try {
       const account = await Account.findOne({
@@ -56,9 +62,6 @@ class AccountController {
       }
       const payload = {
         idUser: user.idUser,
-        isAdmin: user.isAdmin,
-        email: user.email,
-        idPayment: user.idPayment,
       };
 
       const token = jwt.sign(payload, process.env.JWT_SECRET, {
