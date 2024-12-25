@@ -5,6 +5,18 @@ const jwt = require("jsonwebtoken");
 class AccountController {
   static async getAccounts(req, res) {
     try {
+      const idUser = req.idUser;
+      // Only possible to see all accounts if the user is admin
+      const user = await User.findOne({
+        where: {
+          idUser: idUser,
+          isAdmin: true,
+        },
+      });
+      if (!user) {
+        return res.status(401).json(`Acesso negado`);
+      }
+
       const accounts = await Account.findAll();
       return res.status(200).json(accounts);
     } catch (e) {
@@ -16,15 +28,11 @@ class AccountController {
     const { id } = req.params;
     const idUserFromMid = req.idUser;
 
-    // If jwt decoded token from idUser is not equal to the actualy params, it should throw access denied to that endpoint
-    if (idUserFromMid != id) {
-      return res.status(401).json(`Acesso negado.`);
-    }
-
     try {
       const account = await Account.findOne({
         where: {
           idAccount: id,
+          idUser: idUserFromMid,
         },
       });
       if (!account) {

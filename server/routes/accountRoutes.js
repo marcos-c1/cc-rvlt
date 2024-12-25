@@ -3,7 +3,11 @@ const AuthMiddleware = require("../middlewares/authMiddleware");
 const router = express.Router();
 const AccountController = require("../controllers/accountController");
 
-router.get("/contas", AccountController.getAccounts);
+router.get(
+  "/contas",
+  AuthMiddleware.verifyToken,
+  AccountController.getAccounts,
+);
 router.get(
   "/conta/:id",
   AuthMiddleware.verifyToken,
