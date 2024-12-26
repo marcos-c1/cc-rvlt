@@ -1,7 +1,7 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, Model } = require("sequelize");
 const sequelize = require("../db/config");
 const Payment = require("./Payment");
-const bcrypt = require("bcrypt");
+const Account = require("./Account");
 
 const User = sequelize.define(
   "User",
@@ -10,6 +10,20 @@ const User = sequelize.define(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+    },
+    idPayment: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Payment,
+        key: "idPayment",
+      },
+    },
+    idAccount: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Account,
+        key: "idAccount",
+      },
     },
     fullName: {
       type: DataTypes.STRING,
@@ -27,23 +41,17 @@ const User = sequelize.define(
       type: DataTypes.BOOLEAN,
       allowNull: false,
       comment: "Check if the current user is an admin of the page",
-    },
-    idPayment: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      comment: "The latest payment that the current user did",
-      references: {
-        model: Payment,
-        key: "idPayment",
-      },
-    },
+    }
   },
   {
     timestamps: true,
   },
 );
 
-User.hasOne(Payment, { as: "Payment", foreignKey: "idPayment" });
-Payment.belongsTo(User, { as: "User", foreignKey: "idUser" });
+User.hasMany(Payment, { targetKey: "idUser", foreignKey: "idUser", onDelete: 'CASCADE'});
+Payment.hasOne(User, { targetKey: "idPayment", foreignKey: "idPayment", onDelete: 'RESTRICT'});
+
+User.hasOne(Account, { targetKey: "idUser", foreignKey: "idUser", onDelete: 'CASCADE' });
+Account.hasOne(User, { targetKey: "idAccount", foreignKey: "idAccount" });
 
 module.exports = User;

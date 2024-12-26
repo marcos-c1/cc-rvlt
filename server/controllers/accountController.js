@@ -53,13 +53,19 @@ class AccountController {
         },
       });
 
+      console.log(user);
+      
+      if (!user) {
+        return res.status(401).json(`Acesso negado. E-mail ou senha errados`);
+      }
+
       const account = await Account.findOne({
         where: {
           idUser: user.idUser,
         },
       });
 
-      if (!user || !account) {
+      if (!account) {
         return res.status(401).json(`Acesso negado. E-mail ou senha errados`);
       }
 

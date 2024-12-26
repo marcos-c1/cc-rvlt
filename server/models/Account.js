@@ -7,6 +7,10 @@ class Account extends Model {
   validPwd = (pwd) => {
     return bcrypt.compareSync(pwd, this.password);
   };
+  hashPwd = (user) => {
+    const salt = bcrypt.genSaltSync();
+    user.password = bcrypt.hashSync(user.password, salt);
+  }
 }
 
 Account.init(
@@ -30,16 +34,11 @@ Account.init(
   {
     timestamps: true,
     hooks: {
-      beforeCreate: (user) => {
-        const salt = bcrypt.genSaltSync();
-        user.password = bcrypt.hashSync(user.password, salt);
-      },
+      beforeCreate: (user) => user.hashPwd(user),
+      beforeSave: (user) => user.hashPwd(user)
     },
     sequelize,
   },
 );
-
-User.hasOne(Account, { as: "Account", foreignKey: "idAccount" });
-Account.belongsTo(User, { as: "User", foreignKey: "idUser" });
 
 module.exports = Account;

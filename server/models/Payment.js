@@ -10,14 +10,6 @@ const Payment = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    idUser: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: User,
-        key: "idUser",
-      },
-    },
     type: {
       type: DataTypes.ENUM("STANDARD", "PRO"),
       allowNull: false,
@@ -43,5 +35,6 @@ const Payment = sequelize.define(
     timestamps: true,
   },
 );
+
 
 module.exports = Payment;
