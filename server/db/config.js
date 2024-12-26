@@ -9,6 +9,8 @@ class Database extends Sequelize {
       storage: "../storage/db.sqlite",
     });
     this.auth();
+    this.drop({force: true});
+    this.sync({force: true});
   }
 
   async auth() {

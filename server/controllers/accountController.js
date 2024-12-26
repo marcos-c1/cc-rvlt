@@ -53,8 +53,6 @@ class AccountController {
         },
       });
 
-      console.log(user);
-      
       if (!user) {
         return res.status(401).json(`Acesso negado. E-mail ou senha errados`);
       }
@@ -72,7 +70,7 @@ class AccountController {
       const match = account.validPwd(password);
 
       if (!match) {
-        return res.status(401).json(`Acesso negado. E-mail ou senha errados`);
+        return res.status(401).json(`Senha incorreta`);
       }
       const payload = {
         idUser: user.idUser,
@@ -108,6 +106,7 @@ class AccountController {
         idUser: req.body.idUser,
         password: req.body.password,
       });
+
       return res.status(201).json(`Conta criada!`);
     } catch (e) {
       return res.status(500).json(`Erro ao criar conta: ${e}`);

@@ -11,20 +11,6 @@ const User = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    idPayment: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: Payment,
-        key: "idPayment",
-      },
-    },
-    idAccount: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: Account,
-        key: "idAccount",
-      },
-    },
     fullName: {
       type: DataTypes.STRING,
       allowNull: false,
