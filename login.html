@@ -16,7 +16,7 @@
           confirmation so you can change your current password to a new one.
           Please type your linked account e-mail below
         </p>
-        <div class="flex-col" style="gap: 2vh;">
+        <div class="flex-col" style="gap: 2vh">
           <input type="text" placeholder="E-mail confirmation" />
           <button id="btn">Send confirmation</button>
         </div>
@@ -32,13 +32,18 @@
         <input type="text" name="login" id="login" placeholder="Username" />
         <input type="password" name="pwd" id="pwd" placeholder="Password" />
         <div class="flex-row" style="margin-top: 1vh; margin-bottom: 2vh">
-          <small id="forgot-pwd" style="user-select: none;">Forgot your password?</small>
+          <small id="forgot-pwd" style="user-select: none"
+            >Forgot your password?</small
+          >
           <div class="flex-row" id="remember__container">
             <input type="checkbox" name="check" id="check" />
-            <span style="user-select: none;">Remember me?</span>
+            <span style="user-select: none">Remember me?</span>
           </div>
         </div>
         <button id="btn" type="submit">Enter</button>
+        <a href="/create-account.html" id="create-account"
+          >Or create an account</a
+        >
       </form>
     </main>
   </body>

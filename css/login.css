@@ -100,10 +100,14 @@ a:hover,
   gap: 2vh;
 }
 
-#forgot-pwd {
+#forgot-pwd:hover,
+#create-account:hover {
+  color: var(--orange);
   cursor: pointer;
 }
 
-#forgot-pwd:hover {
-  color: var(--orange);
+#create-account {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

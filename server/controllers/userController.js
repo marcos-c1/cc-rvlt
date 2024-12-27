@@ -33,6 +33,7 @@ class UserController {
         email: req.body.email,
         phone: req.body.phone,
         idCourse: req.body.idCourse ?? null,
+        imagePath: req.body.imagePath ?? null,
         isAdmin: req.body.isAdmin ?? false,
         idPayment: req.body.idPayment ?? null,
       });
@@ -52,6 +53,7 @@ class UserController {
           email: req.body.email,
           phone: req.body.phone,
           idCourse: req.body.idCourse ?? null,
+          imagePath: req.body.imagePath ?? null,
           isAdmin: req.body.isAdmin ?? false,
           idPayment: req.body.idPayment ?? null,
         },

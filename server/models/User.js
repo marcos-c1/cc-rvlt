@@ -23,21 +23,37 @@ const User = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    imagePath: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     isAdmin: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       comment: "Check if the current user is an admin of the page",
-    }
+    },
   },
   {
     timestamps: true,
   },
 );
 
-User.hasMany(Payment, { targetKey: "idUser", foreignKey: "idUser", onDelete: 'CASCADE'});
-Payment.hasOne(User, { targetKey: "idPayment", foreignKey: "idPayment", onDelete: 'RESTRICT'});
+User.hasMany(Payment, {
+  targetKey: "idUser",
+  foreignKey: "idUser",
+  onDelete: "CASCADE",
+});
+Payment.hasOne(User, {
+  targetKey: "idPayment",
+  foreignKey: "idPayment",
+  onDelete: "RESTRICT",
+});
 
-User.hasOne(Account, { targetKey: "idUser", foreignKey: "idUser", onDelete: 'CASCADE' });
+User.hasOne(Account, {
+  targetKey: "idUser",
+  foreignKey: "idUser",
+  onDelete: "CASCADE",
+});
 Account.hasOne(User, { targetKey: "idAccount", foreignKey: "idAccount" });
 
 module.exports = User;
