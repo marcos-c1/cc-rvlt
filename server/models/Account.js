@@ -9,7 +9,7 @@ class Account extends Model {
   hashPwd = (user) => {
     const salt = bcrypt.genSaltSync();
     user.password = bcrypt.hashSync(user.password, salt);
-  }
+  };
 }
 
 Account.init(
@@ -32,10 +32,13 @@ Account.init(
         user.password = bcrypt.hashSync(user.password, salt);
       },
       beforeBulkUpdate: (user) => {
-        console.log(user)
+        console.log(user);
         const salt = bcrypt.genSaltSync();
-        user.attributes.password = bcrypt.hashSync(user.attributes.password, salt);
-      }
+        user.attributes.password = bcrypt.hashSync(
+          user.attributes.password,
+          salt,
+        );
+      },
     },
     sequelize,
   },

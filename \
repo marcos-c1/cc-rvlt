@@ -5,15 +5,9 @@ const formAccount = document.getElementById("create-account-form");
 
 imgInput.addEventListener("change", (ev) => {
   const file = ev.target.files[0];
-  const fileReader = new FileReader();
-
-  fileReader.addEventListener("load", (ev) => {
-    imgSrc.src = ev.target.result;
-  });
-
+  console.log(file);
   if (file) {
-    // imgSrc.src = URL.createObjectURL(file);
-    fileReader.readAsDataURL(file);
+    imgSrc.src = URL.createObjectURL(file);
     caption.innerText = file.name;
   } else {
     imgSrc.src = "./imgs/picture-not-found.svg";
@@ -25,7 +19,7 @@ formAccount.addEventListener("submit", handleSubmit);
 
 async function handleSubmit(e) {
   e.preventDefault();
-  const { name, mail, cel } = e.target;
+  const { name, file, mail, cel } = e.target;
   var validateEmail = false;
   var validatePhone = false;
 
@@ -52,10 +46,9 @@ async function handleSubmit(e) {
   }
 
   if (validateEmail && validatePhone) {
-    const fileData = await fetch(imgSrc.src, {
-      method: "GET",
-    }).then((r) => r.blob());
-    console.log(fileData);
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+
     const response = await fetch("http://localhost:5000/api/v1/usuario", {
       method: "POST",
       headers: {
@@ -65,9 +58,10 @@ async function handleSubmit(e) {
         fullname: name.value,
         email: mail.value,
         phone: cel.value,
-        imgBlob: fileData,
+        imagePath: file.value,
       }),
     });
     console.log(response.json());
   }
+  //console.log(name.value, file, mail.value, cel.value);
 }

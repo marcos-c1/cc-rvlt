@@ -23,8 +23,8 @@ const User = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    imagePath: {
-      type: DataTypes.STRING,
+    imgBlob: {
+      type: DataTypes.BLOB,
       allowNull: true,
     },
     isAdmin: {

@@ -1,10 +1,18 @@
 require("dotenv").config();
 const express = require("express");
 const sequelize = require("./db/config");
+const cors = require("cors");
 const PORT = process.env.PORT || 3000;
 const app = express();
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+
+const corsOptions = {
+  origin: process.env.NODE_ENV === "production" ? "*" : "http://localhost:5555",
+  methods: "GET,PUT,POST,DELETE",
+};
+
+app.use(cors(corsOptions));
 
 // database
 sequelize.sync();

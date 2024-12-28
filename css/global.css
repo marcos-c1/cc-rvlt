@@ -3,6 +3,7 @@
   --orange: #f55604;
   --black: #2e2e2e;
   --blackier: #191919;
+  --green: #22c55e;
 }
 
 a {
@@ -90,6 +91,11 @@ select {
   outline: unset;
 }
 
+input:-internal-autofill-selected {
+  appearance: none;
+  background-color: transparent !important;
+}
+
 input[type="checkbox"] {
   appearance: none;
   background-color: var(--blackier);
@@ -157,4 +163,12 @@ ul {
 
 .full-width {
   width: 100%;
+}
+
+.error-msg {
+  padding-top: 5px;
+  color: red;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 15px;
 }

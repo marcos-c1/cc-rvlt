@@ -9,11 +9,11 @@
   </head>
   <body>
     <main id="container">
-      <form method="post" id="form">
+      <form action="" onsubmit="handleSubmit" id="create-account-form">
         <h1>Create your account</h1>
         <div class="flex-col">
           <label for="name">Full Name</label>
-          <input type="text" name="name" id="name" />
+          <input type="text" name="name" id="name" required />
         </div>
         <div class="flex-col">
           <label for="name">Profile Image</label>
@@ -42,21 +42,26 @@
             placeholder="email@email.com"
             name="mail"
             id="mail"
+            required
           />
+          <span class="error-msg" id="error-email"></span>
         </div>
         <div class="flex-col">
           <label for="cel">Phone</label>
           <input
             type="text"
             placeholder="(DDD) 9 9999-9999"
+            pattern="[0-9]{11}"
             name="cel"
             id="cel"
+            required
           />
+          <span class="error-msg" id="error-phone"></span>
         </div>
         <div class="region-btn">
-          <button id="btn-cancel" type="submit">
-            <a href="/login.html">Cancel</a>
-          </button>
+          <a href="/login.html">
+            <button id="btn-cancel" type="button">Cancel</button>
+          </a>
           <button id="btn-submit" type="submit">Register</button>
         </div>
       </form>

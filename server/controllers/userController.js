@@ -27,13 +27,14 @@ class UserController {
   }
 
   static async createUser(req, res) {
+    console.log(req.body);
     try {
       const user = await User.create({
         fullName: req.body.fullname,
         email: req.body.email,
         phone: req.body.phone,
         idCourse: req.body.idCourse ?? null,
-        imagePath: req.body.imagePath ?? null,
+        imgBlob: req.body.imgBlob ?? null,
         isAdmin: req.body.isAdmin ?? false,
         idPayment: req.body.idPayment ?? null,
       });
@@ -53,7 +54,7 @@ class UserController {
           email: req.body.email,
           phone: req.body.phone,
           idCourse: req.body.idCourse ?? null,
-          imagePath: req.body.imagePath ?? null,
+          imgBlob: req.body.imgBlob ?? null,
           isAdmin: req.body.isAdmin ?? false,
           idPayment: req.body.idPayment ?? null,
         },
