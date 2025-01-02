@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 
 const corsOptions = {
-  origin: process.env.NODE_ENV === "production" ? "*" : "http://localhost:5555",
+  origin: process.env.NODE_ENV === "production" ? "*" : ["http://localhost:5555", "http://localhost:5500"],
   methods: "GET,PUT,POST,DELETE",
 };
 

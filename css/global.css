@@ -91,6 +91,81 @@ select {
   outline: unset;
 }
 
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 2s linear;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    visibility 0s 2s,
+    opacity 2s linear;
+}
+
+.none {
+  overflow: hidden; /* Hide the element content, while height = 0 */
+  height: 0;
+  opacity: 0;
+  transition:
+    height 0ms 2s,
+    opacity 2s;
+}
+
+.flex-effect {
+  height: auto;
+  opacity: 1;
+  transition:
+    height 0ms 0ms,
+    opacity 2s 0ms;
+}
+
+#pop-up {
+  position: absolute;
+  right: 0;
+  width: 300px;
+  height: 100px;
+  border: 1px solid #4d4c4c;
+  border-radius: 5px;
+  color: var(--white);
+  font: inherit;
+  background-color: var(--blackier);
+  padding: 1vh;
+  outline: unset;
+  margin: 1rem;
+  transform: 0.2s all ease-in-out;
+}
+
+#pop-up > div > svg {
+  padding-bottom: 1rem;
+}
+
+#close-icon {
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  width: 15px;
+  float: right;
+  fill: #9ca3af;
+}
+
+#confirmed-icon {
+  display: inline;
+  width: 45px;
+  fill: #22c55e;
+  flex-shrink: 0;
+}
+
+#close-icon:hover {
+  fill: #ef4444;
+}
+
+#close-icon:hover {
+  color: red;
+}
+
 input:-internal-autofill-selected {
   appearance: none;
   background-color: transparent !important;
@@ -123,6 +198,10 @@ input[type="checkbox"]::before {
 
 input[type="checkbox"]:checked::before {
   transform: scale(1);
+}
+
+.flex {
+  display: flex;
 }
 
 .flex-row {

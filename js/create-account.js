@@ -2,6 +2,23 @@ const imgInput = document.getElementById("file");
 const imgSrc = document.getElementById("pic");
 const caption = document.getElementById("caption");
 const formAccount = document.getElementById("create-account-form");
+const popUp = document.getElementById("pop-up");
+const closeIcon = document.getElementById("close-icon");
+const pwdInput = document.getElementById("pwd");
+
+pwdInput.addEventListener("focus", (_) => {
+  const containerPwd = document.querySelectorAll("#container-pwd");
+  for (let i = 0; i < containerPwd.length; i++) {
+    containerPwd[i].classList.replace("none", "flex-effect");
+  }
+});
+
+pwdInput.addEventListener("focusout", (_) => {
+  const containerPwd = document.querySelectorAll("#container-pwd");
+  for (let i = 0; i < containerPwd.length; i++) {
+    containerPwd[i].classList.replace("flex-effect", "none");
+  }
+});
 
 imgInput.addEventListener("change", (ev) => {
   const file = ev.target.files[0];
@@ -21,11 +38,35 @@ imgInput.addEventListener("change", (ev) => {
   }
 });
 
-formAccount.addEventListener("submit", handleSubmit);
+async function saveFormToServer(name, mail, cel) {
+  const fileData = await fetch(imgSrc.src, {
+    method: "GET",
+  }).then((r) => r.blob());
 
-async function handleSubmit(e) {
-  e.preventDefault();
-  const { name, mail, cel } = e.target;
+  await fetch("http://localhost:5000/api/v1/usuario", {
+    method: "POST",
+    redirect: "manual",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      fullname: name.value,
+      email: mail.value,
+      phone: cel.value,
+      imgBlob: fileData,
+    }),
+  }).then(() => false);
+}
+
+closeIcon.addEventListener("click", () => {
+  popUp.className = "hidden";
+});
+
+formAccount.addEventListener("submit", (e) => handleFormSubmit(e));
+
+function handleFormSubmit(event) {
+  event.preventDefault();
+  const { name, mail, cel } = event.target;
   var validateEmail = false;
   var validatePhone = false;
 
@@ -33,7 +74,7 @@ async function handleSubmit(e) {
     validateEmail = true;
   } else {
     const error = document.getElementById("error-email");
-    error.textContent = "Please, type an valid email address.";
+    error.innerText = "Please, type an valid email address.";
     name.value = "";
     mail.value = "";
     cel.value = "";
@@ -45,29 +86,17 @@ async function handleSubmit(e) {
     validatePhone = true;
   } else {
     const error = document.getElementById("error-phone");
-    error.textContent = "Please, type an valid brazil phone number.";
+    error.innerText = "Please, type an valid brazil phone number.";
     name.value = "";
     mail.value = "";
     cel.value = "";
   }
 
   if (validateEmail && validatePhone) {
-    const fileData = await fetch(imgSrc.src, {
-      method: "GET",
-    }).then((r) => r.blob());
-    console.log(fileData);
-    const response = await fetch("http://localhost:5000/api/v1/usuario", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        fullname: name.value,
-        email: mail.value,
-        phone: cel.value,
-        imgBlob: fileData,
-      }),
-    });
-    console.log(response.json());
+    saveFormToServer(name, mail, cel);
+    popUp.className = "visible";
+    setTimeout(() => {
+      popUp.className = "hidden";
+    }, 3000);
   }
 }

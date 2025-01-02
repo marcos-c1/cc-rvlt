@@ -1,12 +1,16 @@
 #container {
   height: auto;
-  width: 400px;
+  width: 100vw;
   height: 100vh;
+  color: var(--white);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
   align-content: start;
-  margin-top: 20vh;
-  color: var(--white);
+  width: 400px;
 }
 
 html,
@@ -94,4 +98,8 @@ input[type="file"] {
   margin: 1rem 0;
   max-width: 120px;
   max-height: 120px;
+}
+
+#container-pwd > img {
+  margin-right: 10px;
 }
