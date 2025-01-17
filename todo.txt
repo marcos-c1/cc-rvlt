@@ -1,0 +1,9 @@
+- responsive layout to each page
+- user login and logout handler
+- user menu fixed toolbar
+- sidebar with different sections on course page
+- fetch courses from server
+- add course page video
+- add admin page
+- fix create account page refresh (fetch issues)
+- add stripe handler; prob last one
